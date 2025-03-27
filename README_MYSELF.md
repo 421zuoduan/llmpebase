@@ -66,3 +66,14 @@ self.client = OpenAI(
 #         self.graph, self.node_pool, save_name="built_structure"
 #     )
 ```
+
+
+## 改 prompt
+
+需要改 `/home/wuzongqian/anaconda/lib/python3.11/site-packages/llmpebase/model/__init__.py`, `/home/wuzongqian/anaconda/lib/python3.11/site-packages/llmpebase/prompt/__init__.py`, `llmpebase/prompt/system_prompt.py` 添加 "Let's think step by step.",
+
+`BaseZeroShotCoTPrompting_compare` 就是 Let's think step by step. 所以 `llmpebase/model/prompting/base.py` 不用添加新类. 需要修改 `/home/wuzongqian/anaconda/lib/python3.11/site-packages/llmpebase/model/__init__.py`, 给 prompts_factory 添加新数据集使用的 prompt, 主要设置 zeroshot_cot就可以
+
+`/home/wuzongqian/anaconda/lib/python3.11/site-packages/llmpebase/extractor/__init__.py` 添加 extractor, `/home/wuzongqian/anaconda/lib/python3.11/site-packages/llmpebase/evaluator/__init__.py` 添加 evaluator
+
+`/home/wuzongqian/anaconda/lib/python3.11/site-packages/llmpebase/pipeline.py` 不加载 trainset

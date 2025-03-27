@@ -1,0 +1,1 @@
+python examples/BoTReasoning/BoTReasoning.py -c configs/MATH-500/GPT4/BoTReasoning_ZeroshotCoT.yml -b datasets

@@ -9,7 +9,9 @@ import json
 import logging
 from typing import List, Dict
 
-from llmpebase.model.thought_structure.structure_generic import BasicNode
+from ...llmpebase.model.thought_structure.structure_generic import BasicNode
+
+# from llmpebase.model.thought_structure.structure_generic import BasicNode
 
 
 def get_chain_path(chain: List[BasicNode]) -> str:
