@@ -36,7 +36,10 @@ class GPTAPIRequest(base.BaseLlmRequest):
         load_dotenv(auth_env_path)
 
         # Define the client
-        self.client = None
+        self.client = OpenAI(
+            api_key=os.environ.get("CHATANYWHERE_API_KEY"),  # 修改环境变量名
+            base_url="https://api.chatanywhere.tech/v1"   # 替换为 ChatAnywhere 的 API 地址
+        )
 
     def configuration(self):
         """Configure the GPT model."""
@@ -53,7 +56,10 @@ class GPTAPIRequest(base.BaseLlmRequest):
         self.generation_config.update(generation_settings)
 
         # Define the client
-        self.client = OpenAI(api_key=os.environ.get("OPENAI_API_KEY"))
+        self.client = OpenAI(
+            api_key=os.environ.get("CHATANYWHERE_API_KEY"),  # 修改环境变量名
+            base_url="https://api.chatanywhere.tech/v1"   # 替换为 ChatAnywhere 的 API 地址
+        )
         logging.info("Connected to a OPENAI client.")
 
     def completion_with_backoff(self, **kwargs):
